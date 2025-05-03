@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+@theme {
+  --color-*: initial;
+  --color-primary: #071427;
+  --color-pimary-lite: #132c4f;
+  --color-btnBlue: #4185f4;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-white-bg: #eeeeee;
+  --color-text-secondary: #6e6e6e;
+  --color-danger: #f05e5e;
+  --color-success: #85d7b9;
+  --color-warning: #d4aa39;
+}
+
+body {
+  @apply bg-white-bg;
+}
