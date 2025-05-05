@@ -1,5 +1,7 @@
 import BtnOut from "@/src/components/dashboard/sideNav/BtnOut";
 import { auth } from "@/auth";
+import StatusFilter from "@/src/components/dashboard/sideNav/StatusFilter";
+import OrderFilter from "@/src/components/dashboard/sideNav/OrderFilter";
 
 export default async function SideNav() {
   const session = await auth();
@@ -23,10 +25,12 @@ export default async function SideNav() {
 
         <div>
           <header className="py-4">
-            {/*   <p className=" text-text-secondary font-semibold text-xl">
+            <p className=" text-text-secondary font-semibold text-xl">
               Filtros
-            </p> */}
+            </p>
           </header>
+          <StatusFilter />
+          <OrderFilter />
         </div>
 
         <footer className=" flex  justify-center items-end h-full">

@@ -133,9 +133,9 @@ export default function TaskModalInfo() {
               >
                 Eliminar
               </button>
-              <button className="bg-primary text-white rounded-full text-sm px-4 py-2 cursor-pointer">
+              {/* <button className="bg-primary text-white rounded-full text-sm px-4 py-2 cursor-pointer">
                 Actualizar
-              </button>
+              </button> */}
             </footer>
           </aside>
         </form>

@@ -4,6 +4,7 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { TaskType } from "@/src/types/type";
 import { revalidatePath } from "next/cache";
+import { FilterStatusType } from "@/src/types/type";
 
 export async function deleteTask(id: string) {
   const user = await auth();
@@ -22,15 +23,26 @@ export async function deleteTask(id: string) {
   return "Successfully Deleted Task";
 }
 
-export async function getTasks() {
+export async function getTasks(
+  status?: FilterStatusType,
+  order?: "asc" | "desc"
+) {
   const user = await auth();
   const userEmail = user?.user?.email;
 
-  const { data, error } = await supabase
-    .from("todo-list")
-    .select("*")
-    .eq("user", userEmail);
+  let query = supabase.from("todo-list").select("*").eq("user", userEmail);
 
+  if (status !== "todos" && status) {
+    query = query.eq("status", status);
+  }
+  if (!order || order == "desc") {
+    query = query.order("created_at", { ascending: false });
+  }
+  if (order === "asc") {
+    query = query.order("created_at", { ascending: true });
+  }
+
+  const { data, error } = await query;
   if (error) {
     console.error(error);
     return [];

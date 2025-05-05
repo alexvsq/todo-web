@@ -1,10 +1,14 @@
 import TitleContent from "./TitleContent";
-import GridNotes from "./GridNotes";
 import ButtonCreateNewTask from "./ButtonCreateNewTask";
 import TaskCreateModal from "./TaskCreateModal";
 import InfoTaskModal from "./TaskInfoModal";
+import GridNotes from "./GridNotes";
 
-export default async function NotesContent() {
+export default async function NotesContent({
+  filters,
+}: {
+  filters: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   return (
     <>
       <div className="flex-1 p-4 overflow-y-scroll">
@@ -15,7 +19,7 @@ export default async function NotesContent() {
           </aside>
         </header>
 
-        <GridNotes />
+        <GridNotes filters={filters} />
       </div>
       <TaskCreateModal />
       <InfoTaskModal />
